@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>This is Tevin</title>
-    /*<link rel="stylesheet" href="style.css">*/
     <style>
         body {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-        color: #333;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
         }
-        
+
         header {
             background-color: #333;
             color: #fff;
             padding: 2em;
             text-align: center;
         }
-        
+
         header img {
             width: 150px;
             height: 150px;
@@ -29,30 +28,35 @@
             object-fit: cover;
             margin-bottom: 1em;
         }
-        
+
+        nav {
+            background-color: #333; /* Match header background */
+            padding: 0.5em 0;
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
             text-align: center;
         }
-        
+
         nav ul li {
             display: inline;
             margin: 0 1em;
         }
-        
+
         nav a {
             color: #fff;
             text-decoration: none;
         }
-        
+
         section {
             padding: 2em;
             background-color: #fff;
             margin-bottom: 1em;
             border-radius: 5px;
         }
-        
+
         h2 {
             color: #333;
             border-bottom: 2px solid #ccc;
@@ -62,20 +66,20 @@
 
         .center {
             text-align: center;
-            border: 3px solid green;
-          }
-        
+            border: 3px solid #333;
+        }
+
         ul {
             list-style: disc;
             padding-left: 1.5em;
         }
-        
+
         footer {
             text-align: center;
-            padding: 1em;
+            padding: 0.3em;
             background-color: #333;
             color: #fff;
-            position: fixed; 
+            position: fixed;
             bottom: 0;
             width: 100%;
         }
@@ -88,9 +92,18 @@
         <p>Software Developer</p>
     </header>
 
+	<nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+	
     <section id="about">
         <h2>About Me</h2>
         <p class="center">I'm a 29 year old Software Development graduate from Pretoria, I graduated around 4 years ago and been hopping in and out of different jobs, but finally made it to Capitec Bank which gave me the opportunity to get into the program that is making me code this website.</p>
+		<p class="center">For more info here's a link to my <a href ="https://www.canva.com/design/DAFi_SP3JGE/kmTQlA8-C_gb1GtxR9grOw/edit?utm_content=DAFi_SP3JGE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">CV</a></p>
     </section>
 
     <section id="skills">
@@ -104,10 +117,10 @@
 
     <section id="contact">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:tevin.monyai@umuzi.org">Send email</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/vusani-monyai-73a05b121/">LinkedIn</a></p>
+        <p>Email: <a href="mailto:tevin.monyai@umuzi.org">tevin.monyai@umuzi.org</a></p>
         <p>GitHub: <a href="https://github.com/Tevin28">GitHub</a></p>
-        </section>
+		<p>LinkedIn: <a href="https://www.linkedin.com/in/vusani-monyai-73a05b121/">LinkedIn</a></p>
+    </section>
 
     <footer>
         <p>&copy; 2025 Tev'</p>
