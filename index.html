@@ -317,7 +317,7 @@
 			sections.forEach(section => {
 				const sectionTop = section.offsetTop;
 				const sectionId = section.getAttribute('id');
-				/*console.log(`Section ${sectionId} top: ${sectionTop}, Window height: ${windowHeight}, Reveal Point: ${revealPoint}`);
+				console.log(`Section ${sectionId} top: ${sectionTop}, Window height: ${windowHeight}, Reveal Point: ${revealPoint}`);
 				console.log(`Comparison: ${sectionTop} < ${windowHeight} - <span class="math-inline">\{revealPoint\} \(</span>{windowHeight - revealPoint})`);
 
 				if (sectionTop < windowHeight - revealPoint) {
@@ -325,7 +325,7 @@
 					section.classList.add('visible');
 				} else {
 					console.log(`Section ${sectionId} is not yet in view`);
-				}*/
+				}
 			});
 		}
         window.addEventListener('scroll', revealSections); 
