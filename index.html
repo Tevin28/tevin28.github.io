@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>This is Tevin</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
 	<style>
-        	body {
+        body {
 			font-family: sans-serif;
 			margin: 0;
 			padding: 0;
@@ -84,6 +84,14 @@
 			margin-bottom: 1.5em; /* Adjusted margin */
 			border-radius: 5px;
 			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			opacity: 0; /* Initially hidden */
+			transform: translateY(20px); /* Move down slightly */
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth transition */
+		}
+		
+		section.visible {
+			opacity: 1; /* Fully visible */
+			transform: translateY(0); /* Move back to original position */
 		}
 
 		main > section:first-child {
@@ -194,6 +202,7 @@
 				margin: 0 auto; /* Center the content */
 			}
 		}
+        
     </style>
   </head>
   <body>
@@ -210,6 +219,7 @@
             <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
             <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
+        </ul>
     </nav>
 
     <main>
@@ -225,7 +235,9 @@
                 <li>I can play a guiter</li>
                 <li>I can spin a car</li>
                 <li>I speak 9 official languages</li>
+				<br>
                 <li>**Technical Skills:**</li>
+				<br>
                 <li>Proficient in: Java, HTML, CSS, SQL</li>
                 <li>Experience with: C#, Andriod, JavaScript</li>
                 <li>Familiar with: Git, Agile methodologies</li>
@@ -257,7 +269,83 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Tev'</p>
+        <p>&copy; <span id="currentYear">2025</span> Tev'</p>
     </footer>
+	
+	<button id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+	
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('main > section');
+        const yearSpan = document.getElementById('currentYear');
+        const currentYear = new Date().getFullYear();
+        yearSpan.textContent = currentYear;
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        function highlightActiveLink() {
+            const scrollY = window.scrollY;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                const correspondingLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+                if (scrollY >= sectionTop - sectionHeight / 3 && scrollY < sectionTop + sectionHeight - sectionHeight / 3) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    if (correspondingLink) {
+                        correspondingLink.classList.add('active');
+                    }
+                }
+            });
+        }
+        window.addEventListener('scroll', highlightActiveLink);
+
+        function revealSections() {
+		const windowHeight = window.innerHeight;
+		const revealPoint = -1000; 
+
+			sections.forEach(section => {
+				const sectionTop = section.offsetTop;
+				const sectionId = section.getAttribute('id');
+				/*console.log(`Section ${sectionId} top: ${sectionTop}, Window height: ${windowHeight}, Reveal Point: ${revealPoint}`);
+				console.log(`Comparison: ${sectionTop} < ${windowHeight} - <span class="math-inline">\{revealPoint\} \(</span>{windowHeight - revealPoint})`);
+
+				if (sectionTop < windowHeight - revealPoint) {
+					console.log(`Section ${sectionId} is in view, adding 'visible' class`);
+					section.classList.add('visible');
+				} else {
+					console.log(`Section ${sectionId} is not yet in view`);
+				}*/
+			});
+		}
+        window.addEventListener('scroll', revealSections); 
+        revealSections();
+
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY; 
+            if (scrollY > 300) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+</script>
 </body>
 </html>
